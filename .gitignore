@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+*.tsbuildinfo
+*.zip
+*.log
+.DS_Store
+
+-n
+/*.mp4
+/*.mov
+/*.MOV
