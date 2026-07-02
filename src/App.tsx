@@ -5,9 +5,12 @@ import {
   ArrowRight,
   Factory,
   FlaskConical,
+  Grid3X3,
+  Menu,
   PackageCheck,
   ShieldCheck,
   Truck,
+  X,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +21,7 @@ const HERO_VIDEO_SRC = "/hero-logo-motion.mp4";
 const PROCESS_VIDEO_SRC = "/process-scroll.mov";
 const PROCESS_SIDE_CLOSEUP_SRC = "/process-side-closeup.png";
 const PROCESS_SIDE_STACKS_SRC = "/process-side-stacks.png";
+const ZAMAK_VIDEO_SRC = "/delta-ingot-theme-video.mp4";
 
 type Point = {
   x: number;
@@ -235,6 +239,63 @@ const textAlign = {
   fa: "text-right",
 } as const;
 
+const zamakPageCopy = {
+  en: {
+    dir: "ltr",
+    logoLabel: "Back to Delta home",
+    languageLabel: "Switch language to Farsi",
+    languageButton: "فارسی",
+    nav: ["Grades", "Custom", "Scale"],
+    menuItems: ["Grades", "Custom", "Scale", "Home"],
+    title: "Zamak alloys\nmade to scale",
+    body:
+      "We produce Zamak 2, Zamak 5, and Zamak 7, with custom alloy programs matched to your volume, casting process, and chemistry requirements.",
+    chips: ["Zamak 2 / 5 / 7", "Custom chemistry"],
+    button: "Alloy Programs",
+    floatingPrimary: "Zamak 2 / 5 / 7",
+    floatingSecondary: "Custom Alloying / QA",
+    cards: [
+      {
+        label: "Grades",
+        title: "Standard Zamak for controlled casting.",
+      },
+      {
+        label: "Custom",
+        title: "Chemistry matched to your production scale.",
+      },
+    ],
+    scroll: "Zamak",
+    menuFooter: "Producing Zamak grades and custom zinc alloy programs for casting operations.",
+  },
+  fa: {
+    dir: "rtl",
+    logoLabel: "بازگشت به صفحه اصلی دلتا",
+    languageLabel: "تغییر زبان به انگلیسی",
+    languageButton: "English",
+    nav: ["گریدها", "سفارشی", "ظرفیت"],
+    menuItems: ["گریدها", "سفارشی", "ظرفیت", "خانه"],
+    title: "آلیاژهای زاماک\nبرای مقیاس تولید شما",
+    body:
+      "زاماک ۲، زاماک ۵ و زاماک ۷ تولید می کنیم و در صورت نیاز، ترکیب شیمیایی آلیاژ را بر اساس تیراژ، فرایند دایکست و نیاز تولید شما سفارشی می کنیم.",
+    chips: ["زاماک ۲ / ۵ / ۷", "ترکیب سفارشی"],
+    button: "برنامه آلیاژی",
+    floatingPrimary: "زاماک ۲ / ۵ / ۷",
+    floatingSecondary: "آلیاژ سفارشی / کنترل کیفیت",
+    cards: [
+      {
+        label: "گریدها",
+        title: "زاماک استاندارد برای ریخته گری کنترل شده.",
+      },
+      {
+        label: "سفارشی",
+        title: "ترکیب شیمیایی هماهنگ با مقیاس تولید شما.",
+      },
+    ],
+    scroll: "زاماک",
+    menuFooter: "تولید گریدهای زاماک و برنامه های سفارشی آلیاژ روی برای خطوط ریخته گری.",
+  },
+} as const;
+
 function getViewportCenter(): Point {
   if (typeof window === "undefined") {
     return { x: 0, y: 0 };
@@ -254,6 +315,292 @@ function LogoMark() {
       className="h-14 w-auto max-w-[44vw] object-contain sm:h-16"
       draggable={false}
     />
+  );
+}
+
+function ProjectCard({
+  image,
+  label,
+  title,
+  isFarsi = false,
+  className = "",
+}: {
+  image: string;
+  label: string;
+  title: string;
+  isFarsi?: boolean;
+  className?: string;
+}) {
+  return (
+    <article
+      className={`group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 sm:rounded-2xl ${className}`}
+    >
+      <img
+        src={image}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/24 to-transparent" />
+      <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5">
+        <p
+          className={`mb-2 text-[10px] font-semibold uppercase text-white/60 sm:text-xs ${
+            isFarsi ? "font-persian tracking-normal" : "tracking-[0.24em]"
+          }`}
+        >
+          {label}
+        </p>
+        <h3
+          className={`max-w-[11rem] text-sm font-semibold leading-tight text-white sm:text-base md:text-lg ${
+            isFarsi ? "text-right" : ""
+          }`}
+        >
+          {title}
+        </h3>
+        <Grid3X3
+          className={`absolute bottom-4 h-4 w-4 text-white/70 sm:bottom-5 sm:h-5 sm:w-5 ${
+            isFarsi ? "left-4 sm:left-5" : "right-4 sm:right-5"
+          }`}
+        />
+      </div>
+    </article>
+  );
+}
+
+function FloatingSpec({ className, children }: { className: string; children: ReactNode }) {
+  return (
+    <div className={`hidden items-center gap-2 text-xs text-white/70 lg:flex ${className}`}>
+      <span className="h-1.5 w-1.5 rounded-full bg-white" />
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function ZamakLandingPage({
+  language,
+  onClose,
+  onToggleLanguage,
+}: {
+  language: Language;
+  onClose: () => void;
+  onToggleLanguage: () => void;
+}) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const zCopy = zamakPageCopy[language];
+  const isFarsi = language === "fa";
+
+  const handleMenuItemClick = (item: string) => {
+    setMenuOpen(false);
+    if (item === "Home" || item === "خانه") {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      dir={zCopy.dir}
+      className={`relative flex h-screen w-full flex-col overflow-hidden bg-black text-white ${
+        isFarsi ? "font-persian persian-copy" : "font-vilsuve"
+      }`}
+    >
+      <video
+        src={ZAMAK_VIDEO_SRC}
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
+
+      <header className="absolute left-0 right-0 top-0 z-50 px-6 pt-6 md:px-12 lg:px-16" dir="ltr">
+        <nav className="liquid-glass relative flex items-center justify-between gap-4 rounded-xl px-4 py-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="relative z-10"
+            aria-label={zCopy.logoLabel}
+          >
+            <LogoMark />
+          </button>
+          <div
+            className={`relative z-10 ml-auto hidden items-center gap-8 text-sm text-white md:flex lg:absolute lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 ${
+              isFarsi ? "font-persian" : ""
+            }`}
+          >
+            {zCopy.nav.map((item, index) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => {
+                  if (index === 0) {
+                    window.location.hash = "zamak";
+                  }
+                }}
+                className={`transition-colors hover:text-gray-300 ${
+                  index === 0 ? "text-white" : "text-white/70"
+                } ${isFarsi ? "text-[15px] font-medium" : ""}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            aria-label={zCopy.languageLabel}
+            onClick={onToggleLanguage}
+            className={`relative z-10 ml-auto rounded-lg border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-black md:ml-0 ${
+              isFarsi ? "font-persian" : ""
+            }`}
+          >
+            {zCopy.languageButton}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            className="relative z-10 rounded-full border border-white/15 bg-white/[0.06] p-2.5 text-white transition-colors hover:bg-white hover:text-black md:hidden"
+            aria-label="Open menu"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        </nav>
+      </header>
+
+      <main className="relative z-10 flex flex-1 px-5 pt-28 sm:px-6 md:px-12">
+        <section
+          className={`max-w-lg pt-4 sm:pt-8 md:pt-16 ${
+            isFarsi ? "mr-auto text-right" : ""
+          }`}
+          id="grades"
+        >
+          <h1
+            className={`text-3xl leading-[0.95] text-white sm:text-4xl md:text-6xl lg:text-7xl ${
+              isFarsi ? "font-persian tracking-normal leading-[1.12]" : "font-vilsuve tracking-tight"
+            }`}
+          >
+            {zCopy.title.split("\n").map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
+          <p className="mt-5 max-w-xs text-xs leading-relaxed text-white/60 sm:text-sm md:text-base">
+            {zCopy.body}
+          </p>
+          <div
+            className={`mt-6 flex flex-wrap gap-3 text-[11px] uppercase text-white/62 ${
+              isFarsi ? "justify-end tracking-normal" : "tracking-[0.22em]"
+            }`}
+          >
+            {zCopy.chips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-md"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:px-6 sm:py-3"
+          >
+            {zCopy.button}
+            <Grid3X3 className="h-4 w-4" />
+          </button>
+        </section>
+
+        <FloatingSpec className={isFarsi ? "absolute left-[30%] top-[25%]" : "absolute right-[30%] top-[25%]"}>
+          {zCopy.floatingPrimary}
+        </FloatingSpec>
+        <FloatingSpec className={isFarsi ? "absolute left-[15%] top-[45%]" : "absolute right-[15%] top-[45%]"}>
+          {zCopy.floatingSecondary}
+        </FloatingSpec>
+
+        <div
+          className={`absolute bottom-6 grid grid-cols-2 gap-3 sm:bottom-8 sm:gap-4 md:bottom-12 md:gap-5 ${
+            isFarsi ? "left-5 sm:left-6 md:left-12" : "right-5 sm:right-6 md:right-12"
+          }`}
+        >
+          <ProjectCard
+            image={PROCESS_SIDE_CLOSEUP_SRC}
+            label={zCopy.cards[0].label}
+            title={zCopy.cards[0].title}
+            isFarsi={isFarsi}
+            className="col-start-1 row-start-1 w-36 self-end sm:w-44 md:w-52 lg:w-60"
+          />
+          <ProjectCard
+            image={PROCESS_SIDE_STACKS_SRC}
+            label={zCopy.cards[1].label}
+            title={zCopy.cards[1].title}
+            isFarsi={isFarsi}
+            className="col-start-2 row-start-2 w-36 sm:w-44 md:w-52 lg:w-60"
+          />
+        </div>
+
+        <div
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center text-[10px] uppercase tracking-[0.3em] text-white/40 md:flex"
+          style={{ writingMode: "vertical-rl", transform: "translateX(-50%) rotate(180deg)" }}
+        >
+          {zCopy.scroll}
+        </div>
+      </main>
+
+      <div
+        className={`fixed inset-0 z-50 bg-black/90 backdrop-blur-xl transition-opacity duration-500 ${
+          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div
+          className={`flex h-full flex-col px-5 py-5 transition-transform duration-500 ease-out sm:px-6 md:px-12 md:py-6 ${
+            menuOpen ? "translate-y-0" : "-translate-y-8"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={zCopy.logoLabel}
+            >
+              <LogoMark />
+            </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-full border border-white/15 p-3 text-white transition-colors hover:bg-white/10"
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          <nav className="mt-20 flex flex-col">
+            {zCopy.menuItems.map((item, index) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => handleMenuItemClick(item)}
+                className={`border-b border-white/10 py-6 text-4xl font-light text-white transition-all duration-500 hover:tracking-wider ${
+                  menuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                } ${isFarsi ? "text-right font-persian" : "text-left font-vilsuve"}`}
+                style={{ transitionDelay: `${150 + index * 75}ms` }}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+
+          <p
+            className={`mt-auto max-w-xs pb-6 text-xs leading-6 text-white/40 transition-all duration-500 ${
+              menuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            } ${isFarsi ? "mr-auto text-right" : ""}`}
+            style={{ transitionDelay: "450ms" }}
+          >
+            {zCopy.menuFooter}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -473,6 +820,9 @@ export default function App() {
   const smooth = useRef<Point>(getViewportCenter());
   const [cursorPos, setCursorPos] = useState<Point>(getViewportCenter);
   const [language, setLanguage] = useState<Language>("en");
+  const [activePage, setActivePage] = useState<"home" | "zamak">(() =>
+    typeof window !== "undefined" && window.location.hash === "#zamak" ? "zamak" : "home",
+  );
   const copy = pageCopy[language];
   const isFarsi = language === "fa";
   const capabilities = copy.capabilityCards.map((card, index) => ({
@@ -480,15 +830,55 @@ export default function App() {
     icon: capabilityIcons[index],
   }));
 
-  useEffect(() => {
-    document.documentElement.lang = copy.htmlLang;
-    document.documentElement.dir = copy.dir;
-    document.body.dir = copy.dir;
-    document.title = isFarsi ? "آلیاژ روی دلتا" : "Delta Zinc Alloys";
-    ScrollTrigger.refresh();
-  }, [copy.dir, copy.htmlLang, isFarsi]);
+  const openZamakPage = () => {
+    setActivePage("zamak");
+    window.history.pushState(null, "", "#zamak");
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
+  const closeZamakPage = () => {
+    setActivePage("home");
+    window.history.pushState(null, "", "#top");
+    window.setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 0);
+  };
 
   useEffect(() => {
+    const documentLanguage = copy.htmlLang;
+    const documentDirection = copy.dir;
+
+    document.documentElement.lang = documentLanguage;
+    document.documentElement.dir = documentDirection;
+    document.body.dir = documentDirection;
+    document.title =
+      activePage === "zamak"
+        ? isFarsi
+          ? "برنامه آلیاژهای زاماک دلتا"
+          : "Delta Zamak Alloy Programs"
+        : isFarsi
+          ? "آلیاژ روی دلتا"
+          : "Delta Zinc Alloys";
+    ScrollTrigger.refresh();
+  }, [activePage, copy.dir, copy.htmlLang, isFarsi]);
+
+  useEffect(() => {
+    const syncPageFromHash = () => {
+      setActivePage(window.location.hash === "#zamak" ? "zamak" : "home");
+    };
+
+    window.addEventListener("popstate", syncPageFromHash);
+    window.addEventListener("hashchange", syncPageFromHash);
+
+    return () => {
+      window.removeEventListener("popstate", syncPageFromHash);
+      window.removeEventListener("hashchange", syncPageFromHash);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activePage !== "home") return;
+
     const centerCursor = () => {
       const center = getViewportCenter();
       mouse.current = center;
@@ -502,9 +892,11 @@ export default function App() {
     return () => {
       window.removeEventListener("resize", centerCursor);
     };
-  }, []);
+  }, [activePage]);
 
   useEffect(() => {
+    if (activePage !== "home") return;
+
     const restartHeroVideo = () => {
       const video = heroVideoRef.current;
       if (!video) return;
@@ -519,9 +911,11 @@ export default function App() {
     return () => {
       window.removeEventListener("pageshow", restartHeroVideo);
     };
-  }, []);
+  }, [activePage]);
 
   useEffect(() => {
+    if (activePage !== "home") return;
+
     let animationFrame = 0;
 
     const animate = () => {
@@ -537,9 +931,11 @@ export default function App() {
     return () => {
       window.cancelAnimationFrame(animationFrame);
     };
-  }, []);
+  }, [activePage]);
 
   useEffect(() => {
+    if (activePage !== "home") return;
+
     const section = copySectionRef.current;
     if (!section) return;
 
@@ -585,9 +981,11 @@ export default function App() {
     return () => {
       context.revert();
     };
-  }, []);
+  }, [activePage]);
 
   useEffect(() => {
+    if (activePage !== "home") return;
+
     const section = qualitySectionRef.current;
     const video = processVideoRef.current;
     if (!section || !video) return;
@@ -644,7 +1042,7 @@ export default function App() {
       context.revert();
       video.removeEventListener("canplay", playProcessVideo);
     };
-  }, []);
+  }, [activePage]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
     mouse.current = {
@@ -652,6 +1050,18 @@ export default function App() {
       y: event.clientY,
     };
   };
+
+  if (activePage === "zamak") {
+    return (
+      <ZamakLandingPage
+        language={language}
+        onClose={closeZamakPage}
+        onToggleLanguage={() => {
+          setLanguage((current) => (current === "en" ? "fa" : "en"));
+        }}
+      />
+    );
+  }
 
   return (
     <div
@@ -741,12 +1151,13 @@ export default function App() {
 
             <FadeIn delay={1200} duration={1000}>
               <div className={`flex flex-wrap gap-4 ${isFarsi ? "justify-end" : ""}`}>
-                <a
-                  href="#alloys"
+                <button
+                  type="button"
+                  onClick={openZamakPage}
                   className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
                 >
                   {copy.heroCta}
-                </a>
+                </button>
               </div>
             </FadeIn>
           </div>
