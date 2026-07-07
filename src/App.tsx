@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowRight,
   Factory,
   FlaskConical,
   Grid3X3,
@@ -45,12 +44,25 @@ const pageCopy = {
     languageLabel: "Switch language to Farsi",
     brandReveal: "Delta",
     logoLabel: "Delta home",
-    nav: ["Story", "Investing", "Building", "Advisory"],
+    nav: ["About", "Alloys", "Process", "Contact"],
     heroTitle: "Zinc alloys.\nMade for casting.",
     heroSubtitle:
       "Controlled chemistry, lot traceability, and reliable delivery from melt to release.",
-    heroCta: "Explore Now",
     heroTag: "Zamak 3. Zamak 5. Custom.",
+    aboutEyebrow: "About Delta Industry Group",
+    aboutTitle: "About Us",
+    aboutStory:
+      "Delta Industry Group is one of Iran's established manufacturers of Zamak and aluminium ingots, with more than 30 years of industry experience. Built on reliability, technical expertise, and long-term trust, Delta has supplied high-quality materials to companies across Iran, including well-known industrial names such as Ghahreman. From major cities to regional markets, Delta's products are distributed across provinces throughout Iran, supporting manufacturers that depend on consistent, durable, and precisely controlled raw materials. Quality is at the core of every stage of our process. With advanced laboratory testing, strict quality-control procedures, and production standards aligned with international expectations, we ensure that every ingot meets the performance and consistency our clients require. Our commitment is simple: deliver dependable materials, maintain strong partnerships, and continue raising the standard of ingot manufacturing in the region.",
+    aboutCards: [
+      {
+        label: "Mission",
+        text: "To equip Iran's industries with high-standard raw materials that support reliable and efficient manufacturing.",
+      },
+      {
+        label: "Vision",
+        text: "To expand the standard of quality across the region and become a trusted name in premium Zamak and aluminium ingot production.",
+      },
+    ],
     alloysEyebrow: "Industrial Supply",
     alloyHeadingEyebrow: "Built For Production",
     alloyHeading: "Lab-checked alloy supply for production die casting.",
@@ -99,7 +111,6 @@ const pageCopy = {
       "Chemistry, surface condition, lot traceability, and release documentation stay visible before bulk delivery.",
     qualityGate: "Quality Gate",
     qualityTitle: "Ready For Controlled\nProduction Runs?",
-    qualityButton: "START QUALITY REVIEW",
     footerIntro:
       "Premium zinc alloy supply with process checkpoints from raw material intake to release.",
     footerColumns: [
@@ -141,12 +152,25 @@ const pageCopy = {
     languageLabel: "تغییر زبان به انگلیسی",
     brandReveal: "دلتا",
     logoLabel: "خانه دلتا",
-    nav: ["داستان", "آلیاژها", "فرایند", "تماس"],
+    nav: ["درباره", "آلیاژها", "فرایند", "تماس"],
     heroTitle: "آلیاژ روی.\nآماده ریخته گری.",
     heroSubtitle:
       "کنترل ترکیب شیمیایی، ردیابی بچ و تحویل منظم؛ از مرحله ذوب تا خروج محصول.",
-    heroCta: "مشاهده آلیاژها",
     heroTag: "زاماک ۳. زاماک ۵. سفارشی.",
+    aboutEyebrow: "درباره گروه صنعتی دلتا",
+    aboutTitle: "درباره ما",
+    aboutStory:
+      "گروه صنعتی دلتا یکی از تولیدکنندگان باسابقه شمش زاماک و آلومینیوم در ایران است و بیش از ۳۰ سال تجربه صنعتی دارد. دلتا بر پایه اعتماد بلندمدت، دانش فنی و قابلیت اتکا شکل گرفته و مواد اولیه باکیفیت را برای شرکت های مختلف در سراسر ایران، از جمله نام های صنعتی شناخته شده ای مانند قهرمان، تامین کرده است. محصولات دلتا از شهرهای بزرگ تا بازارهای منطقه ای در استان های مختلف ایران توزیع می شوند و از تولیدکنندگانی پشتیبانی می کنند که به مواد اولیه پایدار، بادوام و دقیق کنترل شده نیاز دارند. کیفیت در مرکز همه مراحل فرایند ما قرار دارد. با آزمون های پیشرفته آزمایشگاهی، کنترل کیفیت سخت گیرانه و استانداردهای تولید همسو با انتظارات بین المللی، اطمینان می دهیم هر شمش عملکرد و ثبات مورد نیاز مشتریان را داشته باشد. تعهد ما روشن است: تامین مواد قابل اتکا، حفظ همکاری های قوی و ارتقای استاندارد تولید شمش در منطقه.",
+    aboutCards: [
+      {
+        label: "ماموریت",
+        text: "تامین مواد اولیه استاندارد برای صنایع ایران، به گونه ای که تولیدی قابل اتکا و کارآمد را پشتیبانی کند.",
+      },
+      {
+        label: "چشم انداز",
+        text: "گسترش استاندارد کیفیت در منطقه و تبدیل شدن به نامی قابل اعتماد در تولید شمش زاماک و آلومینیوم ممتاز.",
+      },
+    ],
     alloysEyebrow: "تامین صنعتی",
     alloyHeadingEyebrow: "ساخته شده برای تولید",
     alloyHeading: "آلیاژ کنترل شده برای خطوط دایکست.",
@@ -195,7 +219,6 @@ const pageCopy = {
       "ترکیب شیمیایی، وضعیت سطح، ردیابی بچ و مدارک آزادسازی قبل از تحویل عمده قابل پیگیری است.",
     qualityGate: "دروازه کیفیت",
     qualityTitle: "آماده تولید\nبا کنترل دقیق؟",
-    qualityButton: "بررسی کیفیت تولید",
     footerIntro:
       "تامین آلیاژ روی با کنترل های مرحله ای از ورود ماده اولیه تا آزادسازی محصول.",
     footerColumns: [
@@ -232,7 +255,7 @@ const pageCopy = {
   },
 } as const;
 
-const navHref = ["#alloys", "#alloys", "#quality", "#delivery"];
+const navHref = ["#about", "#alloys", "#quality", "#contact"];
 
 const textAlign = {
   en: "text-left",
@@ -251,7 +274,6 @@ const zamakPageCopy = {
     body:
       "We produce Zamak 2, Zamak 5, and Zamak 7, with custom alloy programs matched to your volume, casting process, and chemistry requirements.",
     chips: ["Zamak 2 / 5 / 7", "Custom chemistry"],
-    button: "Alloy Programs",
     floatingPrimary: "Zamak 2 / 5 / 7",
     floatingSecondary: "Custom Alloying / QA",
     cards: [
@@ -278,7 +300,6 @@ const zamakPageCopy = {
     body:
       "زاماک ۲، زاماک ۵ و زاماک ۷ تولید می کنیم و در صورت نیاز، ترکیب شیمیایی آلیاژ را بر اساس تیراژ، فرایند دایکست و نیاز تولید شما سفارشی می کنیم.",
     chips: ["زاماک ۲ / ۵ / ۷", "ترکیب سفارشی"],
-    button: "برنامه آلیاژی",
     floatingPrimary: "زاماک ۲ / ۵ / ۷",
     floatingSecondary: "آلیاژ سفارشی / کنترل کیفیت",
     cards: [
@@ -293,6 +314,57 @@ const zamakPageCopy = {
     ],
     scroll: "زاماک",
     menuFooter: "تولید گریدهای زاماک و برنامه های سفارشی آلیاژ روی برای خطوط ریخته گری.",
+  },
+} as const;
+
+const contactSectionCopy = {
+  en: {
+    eyebrow: "Contact Us",
+    title: "Direct lines for orders and production questions.",
+    intro:
+      "Use the line that fits your request. Each number routes to a separate Delta contact point.",
+    contactLabel: "Delta Contact",
+    cards: [
+      {
+        label: "Home",
+        role: "General inquiries",
+        number: "+98 21 3642 8322",
+      },
+      {
+        label: "Work",
+        role: "Production and supply",
+        number: "+98 21 3642 8323",
+      },
+      {
+        label: "iPhone",
+        role: "Direct mobile contact",
+        number: "+98 21 3642 8324",
+      },
+    ],
+  },
+  fa: {
+    eyebrow: "تماس با ما",
+    title: "شماره های مستقیم برای سفارش و هماهنگی تولید.",
+    intro:
+      "برای پرسش عمومی، هماهنگی تولید یا تماس مستقیم، یکی از شماره های زیر را استفاده کنید.",
+    contactLabel: "تماس دلتا",
+    cards: [
+      {
+        label: "خانه",
+        role: "پرسش های عمومی",
+        number: "+98 21 3642 8322",
+      },
+      {
+        label: "کار",
+        role: "تولید و تامین",
+        number: "+98 21 3642 8323",
+      },
+      {
+        label: "آیفون",
+        role: "تماس مستقیم",
+        number: "+98 21 3642 8324",
+      },
+    ],
   },
 } as const;
 
@@ -373,6 +445,458 @@ function FloatingSpec({ className, children }: { className: string; children: Re
       <span className="h-1.5 w-1.5 rounded-full bg-white" />
       <span>{children}</span>
     </div>
+  );
+}
+
+function AboutRevealText({ text, isFarsi }: { text: string; isFarsi: boolean }) {
+  const containerRef = useRef<HTMLParagraphElement>(null);
+  const segments = isFarsi ? text.split(/(\s+)/) : text.split("");
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const spans = Array.from(container.querySelectorAll<HTMLElement>("[data-about-segment]"));
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        spans,
+        { opacity: 0.22 },
+        {
+          opacity: 1,
+          ease: "none",
+          stagger: 0.018,
+          scrollTrigger: {
+            trigger: container,
+            start: "top 82%",
+            end: "bottom 28%",
+            scrub: 0.8,
+          },
+        },
+      );
+    }, container);
+
+    return () => {
+      context.revert();
+    };
+  }, [isFarsi, text]);
+
+  return (
+    <p
+      ref={containerRef}
+      className={`mx-auto max-w-4xl text-center text-[clamp(1rem,2vw,1.35rem)] font-medium leading-relaxed text-[#D7E2EA] ${
+        isFarsi ? "font-persian" : ""
+      }`}
+    >
+      {segments.map((segment, index) => (
+        <span key={`${segment}-${index}`} className="relative inline-block" data-about-segment>
+          {segment === " " ? "\u00A0" : segment}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+function AboutSection({
+  copy,
+  isFarsi,
+  language,
+}: {
+  copy: (typeof pageCopy)[Language];
+  isFarsi: boolean;
+  language: Language;
+}) {
+  return (
+    <section
+      id="about"
+      className={`relative z-20 flex min-h-screen flex-col items-center justify-center bg-black px-5 py-20 text-white sm:px-8 md:px-10 ${
+        textAlign[language]
+      }`}
+      dir={copy.dir}
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-16 sm:gap-20 md:gap-24">
+        <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
+          <div className="text-center">
+            <p
+              className={`mb-5 text-[10px] font-semibold uppercase text-white/42 ${
+                isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.32em]"
+              }`}
+            >
+              {copy.aboutEyebrow}
+            </p>
+            <h2
+              className={`hero-heading font-black uppercase leading-none tracking-tight ${
+                isFarsi ? "font-persian text-[clamp(3rem,10vw,132px)]" : "font-kanit text-[clamp(3rem,12vw,160px)]"
+              }`}
+            >
+              {copy.aboutTitle}
+            </h2>
+          </div>
+
+          <AboutRevealText text={copy.aboutStory} isFarsi={isFarsi} />
+        </div>
+
+        <div className="grid w-full gap-4 md:grid-cols-2">
+          {copy.aboutCards.map((card) => (
+            <article
+              key={card.label}
+              className="rounded-sm border border-white/10 bg-white/[0.035] p-6 backdrop-blur-xl md:p-8"
+            >
+              <h3
+                className={`mb-4 text-[11px] font-semibold uppercase text-white/44 ${
+                  isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.24em]"
+                }`}
+              >
+                {card.label}
+              </h3>
+              <p className="text-base leading-7 text-white/70 md:text-lg md:leading-8">
+                {card.text}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactCarouselSection({ language }: { language: Language }) {
+  const contactCopy = contactSectionCopy[language];
+  const isFarsi = language === "fa";
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const frameId = useRef(0);
+  const progress = useRef({ current: 0, target: 0 });
+  const mouse = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
+  const [metrics, setMetrics] = useState({ cardW: 300, cardH: 360 });
+  const cardCount = contactCopy.cards.length;
+  const thicknessLayers = [-6, -3, 0, 3, 6];
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const rx = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      const ry = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      mouse.current.targetX = Math.max(-1, Math.min(1, rx));
+      mouse.current.targetY = Math.max(-1, Math.min(1, ry));
+    };
+
+    const resetMouse = () => {
+      mouse.current.targetX = 0;
+      mouse.current.targetY = 0;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", resetMouse);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", resetMouse);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const cardW = Math.round(Math.min(340, Math.max(220, width * 0.24)));
+      const compactHeight = height < 760 ? 0.88 : 1;
+
+      setMetrics({
+        cardW: Math.round(cardW * compactHeight),
+        cardH: Math.round(cardW * compactHeight * 1.18),
+      });
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const updateScrollTarget = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const scrollableDistance = Math.max(1, rect.height - window.innerHeight);
+      const sectionProgress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+      progress.current.target = sectionProgress * ((cardCount - 1) / cardCount);
+    };
+
+    updateScrollTarget();
+    window.addEventListener("scroll", updateScrollTarget, { passive: true });
+    window.addEventListener("resize", updateScrollTarget);
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollTarget);
+      window.removeEventListener("resize", updateScrollTarget);
+    };
+  }, [cardCount]);
+
+  useEffect(() => {
+    const renderLoop = () => {
+      progress.current.current += (progress.current.target - progress.current.current) * 0.12;
+      mouse.current.x += (mouse.current.targetX - mouse.current.x) * 0.08;
+      mouse.current.y += (mouse.current.targetY - mouse.current.y) * 0.08;
+
+      const radius = Math.min(window.innerWidth * 0.34, 430);
+      const depth = 300;
+      const scrollProgress = progress.current.current;
+
+      cardsRefs.current.forEach((card, index) => {
+        if (!card) return;
+
+        const angle = ((index / cardCount - scrollProgress) * Math.PI * 2) % (Math.PI * 2);
+        const normalizedAngle = Math.atan2(Math.sin(angle), Math.cos(angle));
+        const centerFactor = Math.max(0, (Math.cos(normalizedAngle) + 1) / 2);
+        const x = Math.sin(normalizedAngle) * radius;
+        const z = Math.cos(normalizedAngle) * depth;
+        const rotateY = -Math.sin(normalizedAngle) * 54 + mouse.current.x * 12 * centerFactor;
+        const rotateX = -mouse.current.y * 10 * centerFactor;
+        const scale = 0.78 + centerFactor * 0.24;
+        const opacity = 0.36 + centerFactor * 0.64;
+
+        card.style.opacity = opacity.toFixed(3);
+        card.style.zIndex = Math.round(500 + z).toString();
+        card.style.transform = `translateX(${x.toFixed(2)}px) translateZ(${z.toFixed(
+          2,
+        )}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(
+          2,
+        )}deg) rotateZ(${isFarsi ? "2" : "-2"}deg) scale(${scale.toFixed(3)})`;
+      });
+
+      frameId.current = window.requestAnimationFrame(renderLoop);
+    };
+
+    frameId.current = window.requestAnimationFrame(renderLoop);
+
+    return () => {
+      window.cancelAnimationFrame(frameId.current);
+    };
+  }, [cardCount, isFarsi, metrics.cardH, metrics.cardW]);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="contact"
+      className={`relative z-30 min-h-[230dvh] overflow-visible bg-black px-5 text-white sm:px-8 md:px-12 ${
+        isFarsi ? "font-persian persian-copy text-right" : "font-sans text-left"
+      }`}
+      dir={isFarsi ? "rtl" : "ltr"}
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="sticky top-0 mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-12 py-24 md:py-32 lg:grid-cols-[0.72fr_1.28fr]">
+        <div className={isFarsi ? "lg:order-2" : ""}>
+          <p
+            className={`mb-5 text-[10px] font-semibold uppercase text-white/42 ${
+              isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.32em]"
+            }`}
+          >
+            {contactCopy.eyebrow}
+          </p>
+          <h2
+            className={`max-w-xl font-medium text-white ${
+              isFarsi
+                ? "text-[clamp(2rem,5vw,4.6rem)] leading-[1.12] tracking-normal"
+                : "text-[clamp(2.2rem,5.4vw,5.2rem)] leading-[0.98] tracking-tight"
+            }`}
+          >
+            {contactCopy.title}
+          </h2>
+          <p className="mt-6 max-w-md text-base leading-8 text-white/58 md:text-lg">
+            {contactCopy.intro}
+          </p>
+        </div>
+
+        <div
+          className="relative min-h-[560px] overflow-visible"
+          style={{ perspective: "1350px" }}
+          aria-label={isFarsi ? "کارت های تماس دلتا" : "Delta contact cards"}
+        >
+          <div
+            className="absolute left-1/2 top-1/2"
+            style={{
+              width: `${metrics.cardW}px`,
+              height: `${metrics.cardH}px`,
+              transform: "translate(-50%, -50%)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {contactCopy.cards.map((card, index) => (
+              <div
+                key={card.number}
+                ref={(element) => {
+                  cardsRefs.current[index] = element;
+                }}
+                className="absolute inset-0 will-change-transform"
+                style={{
+                  width: `${metrics.cardW}px`,
+                  height: `${metrics.cardH}px`,
+                  transformStyle: "preserve-3d",
+                  backfaceVisibility: "visible",
+                }}
+              >
+                {thicknessLayers.map((zOffset, layerIndex) => {
+                  const isFrontFace = layerIndex === thicknessLayers.length - 1;
+                  const isBackFace = layerIndex === 0;
+
+                  if (!isFrontFace && !isBackFace) {
+                    return (
+                      <div
+                        key={zOffset}
+                        className="absolute inset-0 rounded-[28px] border border-white/[0.12] bg-white/[0.18]"
+                        style={{ transform: `translateZ(${zOffset}px)` }}
+                      />
+                    );
+                  }
+
+                  return (
+                    <div
+                      key={zOffset}
+                      className="absolute inset-0 overflow-hidden rounded-[28px] border border-white/[0.14] bg-[#111] shadow-2xl shadow-black/50"
+                      style={{
+                        transform: isBackFace
+                          ? `translateZ(${zOffset}px) rotateY(180deg)`
+                          : `translateZ(${zOffset}px)`,
+                        backfaceVisibility: "hidden",
+                        boxShadow:
+                          "inset 0 1px 1px rgba(255,255,255,0.18), 0 30px 90px rgba(0,0,0,0.42)",
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04)_36%,rgba(0,0,0,0.6)_100%)]" />
+                      <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+                      <div className="absolute -bottom-28 left-4 h-64 w-64 rounded-full bg-[#8da2b9]/14 blur-3xl" />
+                      <div className="relative flex h-full flex-col justify-between p-7 md:p-8">
+                        <div>
+                          <div className="mb-6 flex justify-end">
+                            <span className="h-2.5 w-2.5 rounded-full bg-white/72 shadow-[0_0_22px_rgba(255,255,255,0.55)]" />
+                          </div>
+                          <p className="max-w-[14rem] text-sm leading-6 text-white/56 md:text-base">
+                            {card.role}
+                          </p>
+                        </div>
+
+                        <div>
+                          <p
+                            className={`mb-3 text-[10px] uppercase text-white/34 ${
+                              isFarsi
+                                ? "font-persian tracking-normal"
+                                : "font-mono tracking-[0.22em]"
+                            }`}
+                          >
+                            {contactCopy.contactLabel}
+                          </p>
+                          <p
+                            className="font-mono text-[clamp(1.45rem,3vw,2.25rem)] font-semibold leading-none tracking-[-0.03em] text-white"
+                            dir="ltr"
+                          >
+                            {card.number}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QualityGateFinalSection({
+  copy,
+  isFarsi,
+  language,
+}: {
+  copy: (typeof pageCopy)[Language];
+  isFarsi: boolean;
+  language: Language;
+}) {
+  return (
+    <section
+      className={`relative z-30 bg-black px-5 pb-20 pt-6 text-white sm:px-8 md:px-12 md:pb-28 ${
+        textAlign[language]
+      }`}
+    >
+      <div
+        className="mx-auto w-[90%] max-w-7xl border border-white/10 bg-[#1A1A1A]/60 p-[clamp(32px,4vw,64px)] backdrop-blur-[80px]"
+        style={{ WebkitBackdropFilter: "blur(80px)" }}
+      >
+        <div className="flex flex-wrap items-end justify-between gap-10 border-b border-white/10 pb-[clamp(48px,4vw,80px)]">
+          <div>
+            <p
+              className={`mb-5 text-[10px] uppercase text-white/32 ${
+                isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.28em]"
+              }`}
+            >
+              {copy.qualityGate}
+            </p>
+            <h2
+              className={`font-medium text-white ${
+                isFarsi
+                  ? "text-[clamp(2rem,4vw,3.2rem)] leading-[1.18] tracking-normal"
+                  : "text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em]"
+              }`}
+            >
+              {copy.qualityTitle.split("\n").map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid gap-[clamp(32px,3vw,48px)] pt-[clamp(48px,4vw,64px)] md:grid-cols-4">
+          <div>
+            <LogoMark />
+            <p className="mt-6 max-w-[220px] text-[13px] leading-6 text-white/40">
+              {copy.footerIntro}
+            </p>
+          </div>
+          {copy.footerColumns.map((column) => (
+            <div key={column.title}>
+              <h3
+                className={`mb-5 text-[10px] uppercase text-white/30 ${
+                  isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.1em]"
+                }`}
+              >
+                {column.title}
+              </h3>
+              <ul className="space-y-3 text-sm text-white/60">
+                {column.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 grid gap-3 md:grid-cols-3">
+          {copy.qualitySteps.map((step, index) => (
+            <div
+              key={step.label}
+              className="rounded-sm border border-white/10 bg-white/[0.035] p-5"
+            >
+              <div className="mb-8 flex items-center justify-between">
+                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">
+                  {isFarsi ? `۰${index + 1}` : `0${index + 1}`}
+                </span>
+                <PackageCheck size={18} className="text-white/52" />
+              </div>
+              <h3 className="mb-3 text-lg font-semibold text-white">{step.label}</h3>
+              <p className="text-sm leading-6 text-white/54">{step.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -501,13 +1025,6 @@ function ZamakLandingPage({
               </span>
             ))}
           </div>
-          <button
-            type="button"
-            className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:px-6 sm:py-3"
-          >
-            {zCopy.button}
-            <Grid3X3 className="h-4 w-4" />
-          </button>
         </section>
 
         <FloatingSpec className={isFarsi ? "absolute left-[30%] top-[25%]" : "absolute right-[30%] top-[25%]"}>
@@ -815,11 +1332,10 @@ export default function App() {
   const processVideoRef = useRef<HTMLVideoElement>(null);
   const copyRefs = useRef<(HTMLDivElement | null)[]>([]);
   const alloyNarrativeRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const qualityRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mouse = useRef<Point>(getViewportCenter());
   const smooth = useRef<Point>(getViewportCenter());
   const [cursorPos, setCursorPos] = useState<Point>(getViewportCenter);
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("fa");
   const [activePage, setActivePage] = useState<"home" | "zamak">(() =>
     typeof window !== "undefined" && window.location.hash === "#zamak" ? "zamak" : "home",
   );
@@ -829,12 +1345,6 @@ export default function App() {
     ...card,
     icon: capabilityIcons[index],
   }));
-
-  const openZamakPage = () => {
-    setActivePage("zamak");
-    window.history.pushState(null, "", "#zamak");
-    window.scrollTo({ top: 0, left: 0 });
-  };
 
   const closeZamakPage = () => {
     setActivePage("home");
@@ -1009,23 +1519,6 @@ export default function App() {
         },
       );
 
-      gsap.fromTo(
-        qualityRefs.current.filter(Boolean),
-        { autoAlpha: 0, y: 48, filter: "blur(12px)" },
-        {
-          autoAlpha: 1,
-          y: 0,
-          filter: "blur(0px)",
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "bottom bottom",
-            end: "bottom 55%",
-            toggleActions: "play none none reverse",
-          },
-        },
-      );
     }, section);
 
     const playProcessVideo = () => {
@@ -1066,7 +1559,7 @@ export default function App() {
   return (
     <div
       dir={copy.dir}
-      className={`relative min-h-screen bg-[#050505] text-white ${
+      className={`relative min-h-screen bg-black text-white ${
         isFarsi ? "font-persian persian-copy" : "font-sans"
       }`}
     >
@@ -1148,18 +1641,6 @@ export default function App() {
                 {copy.heroSubtitle}
               </p>
             </FadeIn>
-
-            <FadeIn delay={1200} duration={1000}>
-              <div className={`flex flex-wrap gap-4 ${isFarsi ? "justify-end" : ""}`}>
-                <button
-                  type="button"
-                  onClick={openZamakPage}
-                  className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
-                >
-                  {copy.heroCta}
-                </button>
-              </div>
-            </FadeIn>
           </div>
 
           <FadeIn
@@ -1175,6 +1656,8 @@ export default function App() {
           </FadeIn>
         </main>
       </section>
+
+      <AboutSection copy={copy} isFarsi={isFarsi} language={language} />
 
       <section
         id="alloys"
@@ -1295,7 +1778,7 @@ export default function App() {
       <section
         id="quality"
         ref={qualitySectionRef}
-        className="relative z-20 min-h-[360dvh] overflow-visible bg-black text-white"
+        className="relative z-20 min-h-[300dvh] overflow-visible bg-black text-white"
       >
         <div className="sticky top-0 h-[100dvh] overflow-hidden bg-black">
           <div
@@ -1336,6 +1819,10 @@ export default function App() {
           />
           <div
             className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-black via-black/70 to-transparent sm:h-52 md:h-64"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-52 bg-gradient-to-t from-black via-black/80 to-transparent sm:h-64 md:h-80"
             aria-hidden="true"
           />
           <div className="absolute inset-0 bg-black/42" />
@@ -1406,103 +1893,6 @@ export default function App() {
             </div>
           </div>
 
-          <div className="mx-auto flex min-h-[100dvh] w-[90%] items-end pb-16">
-            <div
-              className="w-full border border-white/10 bg-[#1A1A1A]/60 p-[clamp(32px,4vw,64px)] backdrop-blur-[80px]"
-              style={{ WebkitBackdropFilter: "blur(80px)" }}
-            >
-              <div className="flex flex-wrap items-end justify-between gap-10 border-b border-white/10 pb-[clamp(48px,4vw,80px)]">
-                <div>
-                  <p
-                    className={`mb-5 text-[10px] uppercase text-white/32 ${
-                      isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.28em]"
-                    }`}
-                  >
-                    {copy.qualityGate}
-                  </p>
-                  <h2
-                    className={`font-medium text-white ${
-                      isFarsi
-                        ? "text-[clamp(2rem,4vw,3.2rem)] leading-[1.18] tracking-normal"
-                        : "text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em]"
-                    }`}
-                  >
-                    {copy.qualityTitle.split("\n").map((line) => (
-                      <span key={line} className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </h2>
-                </div>
-                <a
-                  href="#quote"
-                  className="pointer-events-auto group flex items-stretch gap-1"
-                >
-                  <span
-                    className={`bg-white px-8 py-5 text-[12px] font-bold text-black transition-colors group-hover:bg-gray-200 ${
-                      isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[-0.01em]"
-                    }`}
-                  >
-                    {copy.qualityButton}
-                  </span>
-                  <span className="flex items-center bg-white px-6 text-black transition-colors group-hover:bg-gray-200">
-                    <ArrowRight size={20} className={isFarsi ? "rotate-180" : ""} />
-                  </span>
-                </a>
-              </div>
-
-              <div className="grid gap-[clamp(32px,3vw,48px)] pt-[clamp(48px,4vw,64px)] md:grid-cols-4">
-                <div>
-                  <LogoMark />
-                  <p className="mt-6 max-w-[220px] text-[13px] leading-6 text-white/40">
-                    {copy.footerIntro}
-                  </p>
-                </div>
-                {copy.footerColumns.map((column) => (
-                  <div key={column.title}>
-                    <h3
-                      className={`mb-5 text-[10px] uppercase text-white/30 ${
-                        isFarsi ? "font-persian tracking-normal" : "font-mono tracking-[0.1em]"
-                      }`}
-                    >
-                      {column.title}
-                    </h3>
-                    <ul className="space-y-3 text-sm text-white/60">
-                      {column.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-
-              <div
-                ref={(element) => {
-                  qualityRefs.current[0] = element;
-                }}
-                className="mt-14 grid gap-3 md:grid-cols-3"
-              >
-                {copy.qualitySteps.map((step, index) => (
-                  <div
-                    key={step.label}
-                    ref={(element) => {
-                      qualityRefs.current[index + 1] = element;
-                    }}
-                    className="rounded-sm border border-white/10 bg-white/[0.035] p-5"
-                  >
-                    <div className="mb-8 flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">
-                        {isFarsi ? `۰${index + 1}` : `0${index + 1}`}
-                      </span>
-                      <PackageCheck size={18} className="text-white/52" />
-                    </div>
-                    <h3 className="mb-3 text-lg font-semibold text-white">{step.label}</h3>
-                    <p className="text-sm leading-6 text-white/54">{step.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
 
         <div
@@ -1521,6 +1911,9 @@ export default function App() {
           </p>
         </div>
       </section>
+
+      <ContactCarouselSection language={language} />
+      <QualityGateFinalSection copy={copy} isFarsi={isFarsi} language={language} />
     </div>
   );
 }
